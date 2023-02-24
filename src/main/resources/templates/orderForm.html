@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<HTML xmlns="http:/ /www.w3.org/1999/xhtml"
+      xmlns:th="http:/ /www.thymeleaf.org"> 
+<HEAD>
+   <TITLE>Taco Cloud</TITLE> 
+   <LINK REL="stylesheet" TH:HREF="@{/styles.css}" />
+</HEAD>
+<BODY>
+<FORM METHOD="POST" TH:ACTION="@{/orders}" TH:OBJECT="${tacoOrder}">
+<H1>Order your taco creations!</H1> 
+<IMG TH:SRC="@{/images/TacoCloud.png}" /> 
+<H3>Your tacos in this order:</H3> <A ID="another" TH:HREF="@{/design}">Design
+another taco</A><BR /> 
+<UL>
+   <LI TH:EACH="taco : ${tacoOrder.tacos}"><SPAN TH:TEXT="${taco.name}">taco
+   name</SPAN></LI> 
+</UL>
+<H3>Deliver my taco masterpieces to...</H3> <LABEL FOR="deliveryName">Name: 
+</LABEL> 
+<INPUT TH:FIELD="*{deliveryName}" TYPE="text" /> 
+<SPAN CLASS="validationError" STYLE="color:red" TH:ERRORS="*{deliveryName}"
+      TH:IF="${#fields.hasErrors('deliveryName')}">Name Error</SPAN> 
+<BR /> <BR /> <LABEL FOR="deliveryStreet">Street address: </LABEL> 
+<INPUT TH:FIELD="*{deliveryStreet}" TYPE="text" /> 
+<SPAN CLASS="validationError" STYLE="color:red" TH:ERRORS="*{deliveryStreet}"
+      TH:IF="${#fields.hasErrors('deliveryStreet')}">Street Error</SPAN> 
+<BR /> <BR /> <LABEL FOR="deliveryCity">City: </LABEL> 
+<INPUT TH:FIELD="*{deliveryCity}" TYPE="text" /> 
+<SPAN CLASS="validationError" STYLE="color:red" TH:ERRORS="*{deliveryCity}"
+      TH:IF="${#fields.hasErrors('deliveryCity')}">City Error</SPAN> 
+<BR /> <BR /> <LABEL FOR="deliveryState">State: </LABEL> 
+<INPUT TH:FIELD="*{deliveryState}" TYPE="text" /> 
+<SPAN CLASS="validationError" STYLE="color:red" TH:ERRORS="*{deliveryState}"
+      TH:IF="${#fields.hasErrors('deliveryState')}">State Error</SPAN> 
+<BR /> <BR /> <LABEL FOR="deliveryZip">Zip code: </LABEL> 
+<INPUT TH:FIELD="*{deliveryZip}" TYPE="text" /> 
+<SPAN CLASS="validationError" STYLE="color:red" TH:ERRORS="*{deliveryZip}"
+      TH:IF="${#fields.hasErrors('deliveryZip')}">Zip code Error</SPAN> 
+<BR /> <BR />
+<H3>Here's how I'll pay...</H3> <LABEL FOR="ccNumber">Credit Card №: 
+</LABEL> 
+<INPUT TH:FIELD="*{ccNumber}" TYPE="text" /> 
+<SPAN CLASS="validationError" STYLE="color:red" TH:ERRORS="*{ccNumber}"
+      TH:IF="${#fields.hasErrors('ccNumber')}">CC Num Error</SPAN> 
+<BR /> <BR /> <LABEL FOR="ccExpiration">Expiration: </LABEL> 
+<INPUT TH:FIELD="*{ccExpiration}" TYPE="text" /> 
+<SPAN CLASS="validationError" STYLE="color:red" TH:ERRORS="*{ccExpiration}"
+      TH:IF="${#fields.hasErrors('ccExpiration')}">Expiration Error</SPAN> 
+<BR /> <BR /> <LABEL FOR="ccCVV">CVV: </LABEL> 
+<INPUT TH:FIELD="*{ccCVV}" TYPE="text" /> 
+<SPAN CLASS="validationError" STYLE="color:red" TH:ERRORS="*{ccCVV}"
+      TH:IF="${#fields.hasErrors('ccCVV')}">CVV Error</SPAN> 
+<BR /> <BR /> 
+<INPUT TYPE="submit" VALUE="Submit Order" /> 
+<DIV TH:IF="${#fields.hasAnyErrors()}"> 
+   <SPAN STYLE="color:red" VALUE="Please correct the problems below and resubmit">Please correct the problems below and resubmit</SPAN> 
+</DIV>
+</FORM>
+</BODY>
+</HTML> 

@@ -1,0 +1,70 @@
+<!DOCTYPE html> 
+<HTML xmlns="http:/ /www.w3.org/1999/xhtml"
+      xmlns:th="http:/ /www.thymeleaf.org"> 
+<HEAD>
+   <TITLE>Taco Cloud</TITLE> 
+   <LINK REL="stylesheet" TH:HREF="@{/styles.css}" />
+</HEAD>
+<BODY>
+
+<H1>Design your taco!</H1> 
+<IMG TH:SRC="@{/images/TacoCloud.png}" /> 
+<FORM METHOD="POST" TH:OBJECT="${taco}">
+<DIV CLASS="grid"> 
+   <DIV CLASS="ingredient-group" ID="wraps"> 
+      <H3>Designate your wrap:</H3> 
+      <DIV TH:EACH="ingredient : ${wrap}"> 
+         <INPUT TH:FIELD="*{ingredients}" TH:VALUE="${ingredient.id}"
+                TYPE="checkbox" /> <SPAN TH:TEXT="${ingredient.name}">INGREDIENT</SPAN><BR />
+         
+      </DIV>
+   </DIV>
+   <DIV CLASS="ingredient-group" ID="proteins"> 
+      <H3>Pick your protein:</H3> 
+      <DIV TH:EACH="ingredient : ${protein}"> 
+         <INPUT TH:FIELD="*{ingredients}" TH:VALUE="${ingredient.id}"
+                TYPE="checkbox" /> <SPAN TH:TEXT="${ingredient.name}">INGREDIENT</SPAN><BR />
+         
+      </DIV>
+   </DIV>
+   <DIV CLASS="ingredient-group" ID="cheeses"> 
+      <H3>Choose your cheese:</H3> 
+      <DIV TH:EACH="ingredient : ${cheese}"> 
+         <INPUT TH:FIELD="*{ingredients}" TH:VALUE="${ingredient.id}"
+                TYPE="checkbox" /> <SPAN TH:TEXT="${ingredient.name}">INGREDIENT</SPAN><BR />
+         
+      </DIV>
+   </DIV>
+   <DIV CLASS="ingredient-group" ID="veggies"> 
+      <H3>Determine your veggies:</H3> 
+      <DIV TH:EACH="ingredient : ${veggies}"> 
+         <INPUT TH:FIELD="*{ingredients}" TH:VALUE="${ingredient.id}"
+                TYPE="checkbox" /> <SPAN TH:TEXT="${ingredient.name}">INGREDIENT</SPAN><BR />
+         
+      </DIV>
+   </DIV>
+   <DIV CLASS="ingredient-group" ID="sauces"> 
+      <H3>Select your sauce:</H3> 
+      <DIV TH:EACH="ingredient : ${sauce}"> 
+         <INPUT TH:FIELD="*{ingredients}" TH:VALUE="${ingredient.id}"
+                TYPE="checkbox" /> <SPAN TH:TEXT="${ingredient.name}">INGREDIENT</SPAN><BR />
+         
+      </DIV>
+   </DIV>
+   <BR /> 
+   <SPAN CLASS="validationError" STYLE="color:red" TH:ERRORS="*{ingredients}"
+         TH:IF="${#fields.hasErrors('ingredients')}">Ingredients Error</SPAN>
+   
+</DIV>
+<DIV> 
+   <H3>Name your taco creation:</H3> 
+   <INPUT TH:FIELD="*{name}" TYPE="text" /> 
+   <SPAN CLASS="validationError" STYLE="color:red" TH:ERRORS="*{name}"
+         TH:IF="${#fields.hasErrors('name')}">Name Error</SPAN> 
+   <BR /> <BR />
+   <BUTTON>Submit Your Taco</BUTTON> 
+</DIV>
+<P TH:TEXT="${message}">placeholder message</P> 
+</FORM>
+</BODY>
+</HTML> 

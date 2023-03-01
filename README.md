@@ -5,4 +5,4 @@
 - сохранить свой рецепт, присвоить ему имя;
 - сделать заказ по собственному рецепту.
 
-Использованы следующие Spring Starters: Thymeleaf, Spring web, DevTools, Lombok, JDBC, H2.
+Использованы следующие Spring Starters: Thymeleaf, Spring web, DevTools, Lombok, Test, Validation, JDBC, H2, JPA.
